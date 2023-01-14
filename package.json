@@ -1,0 +1,36 @@
+{
+  "name": "expense-track-backend",
+  "version": "1.0.0",
+  "description": "Expense Tracker Server",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev": "concurrently \"tsc --watch\" \"npx nodemon -q dist/app.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardpeters/expense-track-backend.git"
+  },
+  "author": "Eduard Peters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardpeters/expense-track-backend/issues"
+  },
+  "homepage": "https://github.com/eduardpeters/expense-track-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "concurrently": "^7.6.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.3",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/express": "^4.17.15",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/node": "^18.11.18"
+  }
+}
