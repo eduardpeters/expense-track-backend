@@ -18,7 +18,6 @@ async function register(req: Request, res: Response) {
             email: newUser.email.toLowerCase(),
             password: newUser.password
         });
-
         dbUser.save();
         res.json({message: "Success"});
     }

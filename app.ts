@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import registerRoute from "./routes/register";
 import loginRoute from "./routes/login";
+import verifyJWT from "./middleware/verifyJWT";
 
 dotenv.config();
 
@@ -17,6 +18,15 @@ app.use("/login", loginRoute);
 
 app.get("/", (req: Request, res: Response) => {
     res.status(200).send("Express + Typescript Server is running!");
+});
+
+interface User {
+    id: string;
+    username:  string;
+}
+
+app.get("/getuser", verifyJWT, (req: Request & {user?: User}, res: Response) => {
+    res.json({isLoggedIn: true, username: req.user?.username});
 });
 
 mongoose.connect(dbURI)
