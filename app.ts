@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import mongoose from "mongoose";
 import registerRoute from "./routes/register";
 import loginRoute from "./routes/login";
@@ -11,6 +12,7 @@ const app: Express = express();
 const PORT = process.env.PORT;
 const dbURI = process.env.MONGO_URI;
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/register", registerRoute);
