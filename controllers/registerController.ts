@@ -8,7 +8,7 @@ async function register(req: Request, res: Response) {
     const takenEmail = await User.findOne({email: newUser.email});
 
     if (takenUsername || takenEmail) {
-        res.json({message: "Username or email has already been taken"});
+        res.status(400).json({message: "Username or email has already been taken"});
     }
     else {
         newUser.password = await bcrypt.hash(req.body.password, 10);
@@ -19,7 +19,7 @@ async function register(req: Request, res: Response) {
             password: newUser.password
         });
         dbUser.save();
-        res.json({message: "Success"});
+        res.status(200).json({message: "Success"});
     }
 }
 

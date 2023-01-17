@@ -9,7 +9,7 @@ async function login(req: Request, res: Response) {
     User.findOne({username: userLoggingIn.username})
         .then(dbUser => {
             if (!dbUser) {
-                return res.json({
+                return res.status(401).json({
                     message: "Invalid username or password"
                 });
             }
@@ -28,7 +28,7 @@ async function login(req: Request, res: Response) {
                                 if (error) {
                                     return res.json({message: error});
                                 }
-                                return res.json({
+                                return res.status(200).json({
                                     message: "Sucess",
                                     token: "Bearer " + token
                                 });
@@ -36,7 +36,7 @@ async function login(req: Request, res: Response) {
                         );
                     }
                     else {
-                        return res.json({
+                        return res.status(401).json({
                             message: "Invalid username or password"
                         });
                     }
