@@ -25,7 +25,7 @@ function verifyJWT(req: Request & { user?: User }, res: Response, next: NextFunc
         }
     }
     else {
-        res.status(401).json({ message: "Incorrect Token Given", isLoggedIn: false });
+        res.status(401).json({ isLoggedIn: false, message: "Incorrect Token Given" });
     }
 }
 

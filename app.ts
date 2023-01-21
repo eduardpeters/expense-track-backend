@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import registerRoute from "./routes/register";
 import loginRoute from "./routes/login";
+import entriesRoute from "./routes/entries";
 import verifyJWT from "./middleware/verifyJWT";
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
+app.use("/entries", entriesRoute);
 
 app.get("/", (req: Request, res: Response) => {
     res.status(200).send("Express + Typescript Server is running!");
