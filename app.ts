@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import registerRoute from "./routes/register";
 import loginRoute from "./routes/login";
 import entriesRoute from "./routes/entries";
-import verifyJWT from "./middleware/verifyJWT";
+import budgetsRoute from "./routes/budgets";
 
 dotenv.config();
 
@@ -18,19 +18,11 @@ app.use(express.json());
 
 app.use("/register", registerRoute);
 app.use("/login", loginRoute);
+app.use("/budgets", budgetsRoute);
 app.use("/entries", entriesRoute);
 
 app.get("/", (req: Request, res: Response) => {
     res.status(200).send("Express + Typescript Server is running!");
-});
-
-interface User {
-    id: string;
-    username:  string;
-}
-
-app.get("/getuser", verifyJWT, (req: Request & {user?: User}, res: Response) => {
-    res.json({isLoggedIn: true, username: req.user?.username});
 });
 
 mongoose.connect(dbURI)

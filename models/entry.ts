@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const entrySchema = new mongoose.Schema({
-    user: {
+    budget: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
     },

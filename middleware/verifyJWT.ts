@@ -1,10 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-
-interface User {
-    id: string;
-    username: string;
-}
+import { User } from "../types/user";
 
 function verifyJWT(req: Request & { user?: User }, res: Response, next: NextFunction) {
     const token = (req.headers["authorization"] as string)?.split(' ')[1];
