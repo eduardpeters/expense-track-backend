@@ -4,7 +4,7 @@ import checkBudgetAuthorization from "../middleware/checkBudgetAuthorization";
 
 const router = express.Router();
 
-router.get("/", checkBudgetAuthorization,entriesController.getAll);
-router.post("/", checkBudgetAuthorization,entriesController.add);
+router.get("/:budgetId", checkBudgetAuthorization, entriesController.getAll);
+router.post("/", entriesController.add);
 
 export default router;

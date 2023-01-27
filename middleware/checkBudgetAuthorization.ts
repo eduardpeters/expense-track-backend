@@ -4,13 +4,13 @@ import { User } from "../types/user";
 
 async function checkBudgetAuthorization(req: Request, res: Response, next: NextFunction) {
     const user = (req as Request & {user: User}).user;
-    const requestBudget = req.body.budget;
+    const requestBudget = req.params.budgetId;
     if (requestBudget) {
         try {
             const budgetDocument = await Budget.findById(requestBudget);
             if (budgetDocument && budgetDocument.users) {
                 if (budgetDocument.users.includes(user.id)) {
-                    (req as Request & {user: User}).user.budgetId = requestBudget;
+                    (req as Request & {user: User}).user.budgetId = budgetDocument._id;
                     next();
                     return;
                 }
