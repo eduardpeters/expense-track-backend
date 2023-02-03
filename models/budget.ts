@@ -8,6 +8,9 @@ const budgetSchema = new mongoose.Schema({
     users: {
         type: [mongoose.Schema.Types.ObjectId],
         required: true,
+    },
+    accounts: {
+        type: [String]
     }
 });
 
